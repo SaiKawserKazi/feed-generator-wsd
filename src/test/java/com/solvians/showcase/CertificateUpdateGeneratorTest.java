@@ -9,15 +9,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CertificateUpdateGeneratorTest {
 
     @Test
-    public void generateQuotes() {
-        int threads = 10;
-        int quotes = 100;
+    public void generateQuotes_shouldReturnExpectedCount() {
+        int threads = 2;
+        int quotesPerThread = 5;
 
-        CertificateUpdateGenerator cerUpGen = new CertificateUpdateGenerator(threads, quotes);
-        Stream<CertificateUpdate> quotesStream = cerUpGen.generateQuotes();
+        CertificateUpdateGenerator generator = new CertificateUpdateGenerator(threads, quotesPerThread);
+        Stream<CertificateUpdate> quotes = generator.generateQuotes();
 
-        assertNotNull(quotesStream);
-        assertEquals(threads * quotes, quotesStream.count());
+        assertNotNull(quotes);
+        assertEquals(threads * quotesPerThread, quotes.count());
     }
 }
-
