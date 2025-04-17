@@ -1,0 +1,27 @@
+plugins {
+	id 'java'
+}
+
+group = 'com.solvians'
+version = 'feed-generator-0.1.0'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+	// JUnit 5 for unit testing
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
+}
+
+test {
+	useJUnitPlatform()
+}
